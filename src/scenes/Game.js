@@ -1,6 +1,7 @@
 import Phaser from 'phaser'
 import * as SceneKeys from '../constants/SceneKeys'
 import * as Colors from '../constants/Colors'
+import * as Audio from '../constants/Audio'
 
 const GameState = {
     Running: 'running',
@@ -41,11 +42,11 @@ export default class Game extends Phaser.Scene {
         
         this.paddleLeft = this.add.rectangle(50, 250, 20, 100, 0xffffff, 1)
         this.physics.add.existing(this.paddleLeft, true) // true makes it static and not move back when ball collides
-        this.physics.add.collider(this.paddleLeft, this.ball)
+        this.physics.add.collider(this.paddleLeft, this.ball, this.handdlePaddleBallCollision, undefined, this)
         
         this.paddleRight = this.add.rectangle(750, 250, 20, 100, 0xffffff, 1)
         this.physics.add.existing(this.paddleRight, true) // true makes it static and not move back when ball collides
-        this.physics.add.collider(this.paddleRight, this.ball)
+        this.physics.add.collider(this.paddleRight, this.ball, this.handdlePaddleBallCollision, undefined, this)
         
         const scoreStyle = {
             fontSize: 48,
@@ -61,6 +62,11 @@ export default class Game extends Phaser.Scene {
         this.cursors = this.input.keyboard.createCursorKeys()
 
     }   
+
+    handdlePaddleBallCollision(paddle, ball) {
+        // console.log(ball);
+        this.sound.play(Audio.Paddle)
+    }
 
     update() {
 
@@ -92,6 +98,7 @@ export default class Game extends Phaser.Scene {
         const aiSpeed = 3
         // console.log(diff);
         if (diff < 0 ) {
+
             //  ball above paddle
             this.paddleRightVelocity.y = -aiSpeed
             
@@ -99,6 +106,8 @@ export default class Game extends Phaser.Scene {
                 this.paddleRightVelocity.y = -10
             }
         } else if (diff > 0) {
+            this.load.audio(Audio.Score, 'assets/score.wav')
+
             // ball below paddle
             this.paddleRightVelocity.y = aiSpeed
 
@@ -123,18 +132,22 @@ export default class Game extends Phaser.Scene {
         }
 
         if(this.ball.x < leftBounds) {
+            this.sound.play(Audio.Score)
+
             // left side score, 
             this.resetBall()
             this.incrementRightScore()
 
         } else if (this.ball.x > rightBounds) {
+            this.sound.play(Audio.Score)
+
             this.resetBall()
             this.incrementLeftScore()
 
         }
 
 
-        const maxScore = 1 //7
+        const maxScore = 7
 
 
 

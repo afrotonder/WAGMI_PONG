@@ -1,11 +1,47 @@
-<html>
+<html style="display: flex; justify-content: center;">
     <head>
+        <link rel="shortcut icon" type="image/jpg" href="./favicon.ico" />
+
         <title>
             WAGMI PONG
         </title>
 
     </head>    
-    <body>
+    <body class="wagmiPong">
+        <style>
+            canvas {
+                width: 90%;
+                height: 70%;
+                margin-top: 10%;
+                border-radius: 12%;
+
+            }
+
+            body {
+    background: linear-gradient(297deg, #000000, #3f4b72, #a8b6e3);
+    background-size: 600% 600%;
+
+    -webkit-animation: AnimationName 16s ease infinite;
+    -moz-animation: AnimationName 16s ease infinite;
+    animation: AnimationName 16s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:9% 0%}
+    50%{background-position:92% 100%}
+    100%{background-position:9% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:9% 0%}
+    50%{background-position:92% 100%}
+    100%{background-position:9% 0%}
+}
+@keyframes AnimationName {
+    0%{background-position:9% 0%}
+    50%{background-position:92% 100%}
+    100%{background-position:9% 0%}
+}
+        </style>
         <script src="./main.js"></script>
     </body>
 </html>
