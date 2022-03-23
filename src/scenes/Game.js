@@ -20,7 +20,11 @@ export default class Game extends Phaser.Scene {
     }
 
     create() {
+        console.log(wagmiballz[0].image);
+        this.load.image('wagmiball', wagmiballz[0].image);
 
+
+        
         this.scene.run(SceneKeys.GameBackground)
         this.scene.sendToBack(SceneKeys.GameBackground)
 
@@ -28,7 +32,7 @@ export default class Game extends Phaser.Scene {
         // this.physics.world.
         // this.add.text(400, 250, 'Game')
 
-        this.ball = this.add.circle(400, 250, 20, Colors.white, 10)
+        this.ball = this.add.image(100, 100, 'wagmiball'); // this.add.circle(400, 250, 20, Colors.white, 10)
         this.physics.add.existing(this.ball)
         this.ball.body.setCircle(10)
         this.ball.body.setBounce(1, 1)

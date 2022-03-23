@@ -17,7 +17,7 @@ export default class TitleScreen extends Phaser.Scene {
 
     create() {
         this.sound.loop = true
-        this.sound.play(Audio.Title)
+        // this.sound.play(Audio.Title)
 
         const title = this.add.text(400, 200, 'WAGMI PONG',
             {

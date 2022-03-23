@@ -1,5 +1,5 @@
 {
-  "name": "test_phaser_pong",
+  "name": "wagmi_pong",
   "version": "1.0.0",
   "description": "testing phaser",
   "main": "index.js",
@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "moralis": "^1.5.5",
     "parcel-bundler": "^1.12.5",
     "parsel": "^0.3.0",
     "phaser": "^3.55.2",
